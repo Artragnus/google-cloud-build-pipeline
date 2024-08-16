@@ -1,0 +1,15 @@
+steps:
+  - name: "node"
+    entrypoint: "npm"
+    args: ["run", "build"]
+
+  - name: "helloWorld"
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - my-function
+      - --region=us-east1
+      - --source=./dist
+      - --trigger-http
+      - --runtime=nodejs20
